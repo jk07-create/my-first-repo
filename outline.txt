@@ -1,5 +1,4 @@
-#include<reg51.h>
-#include "Interfaces.h"
-#include "Iic.h"
-#include "Uart.h"
-#include "Eeprom.h"
+
+     Chapter 1
+     - We meet Nick, Tom, Daisy, and 
+     Jordan
