@@ -1,0 +1,30 @@
+
+
+#include "Eeprom.h"
+#include "Iic.h"
+#include "Interfaces.h"
+
+
+
+void Eeprom_Write(unsigned char Slave_addr,unsigned char Location,unsigned char Data_value)
+{
+	Iic_Start();
+	send_addr(Slave_addr&0xFE);
+	send_addr(Location);
+	send_addr(Data_value);
+	Iic_Stop();
+}
+
+
+unsigned char Eeprom_Read(unsigned char Slave_addr,unsigned char Location,bit ACK_FLAG)
+{
+	unsigned char Received_Data;
+	Iic_Start();
+	send_addr(Slave_addr&0xFE);
+	send_addr(Location);
+	Iic_Start();
+	send_addr(Slave_addr|0x01);
+	Received_Data=Iic_Read_Byte(ACK_FLAG);
+	Iic_Stop();
+	return Received_Data;
+}
